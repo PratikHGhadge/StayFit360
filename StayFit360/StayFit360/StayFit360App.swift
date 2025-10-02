@@ -11,7 +11,11 @@ import SwiftUI
 struct StayFit360App: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+			StayFit360TabView()
         }
     }
+}
+
+#Preview {
+	StayFit360TabView()
 }
