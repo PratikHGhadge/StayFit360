@@ -47,6 +47,46 @@ struct HomeView: View {
 		)
 	]
 
+	let mockWorkouts: [Workout] = [
+		Workout(
+			id: 0,
+			title: "Running",
+			image: "figure.run",
+			tintColor: .cyan,
+			duration: "51 mins",
+			date: "Aug 1",
+			calories: "512 kcal"
+		),
+		Workout(
+			id: 1,
+			title: "Strength Training",
+			image: "figure.run",
+			tintColor: .red,
+			duration: "51 mins",
+			date: "Aug 1",
+			calories: "512 kcal"
+		),
+		Workout(
+			id: 2,
+			title: "Walk",
+			image: "figure.walk",
+			tintColor: .purple,
+			duration: "5 mins",
+			date: "Aug 11",
+			calories: "512 kcal"
+		),
+		Workout(
+			id: 3,
+			title: "Running",
+			image: "figure.run",
+			tintColor: .cyan,
+			duration: "1 min",
+			date: "Aug 19",
+			calories: "512 kcal"
+		)
+	]
+
+
 	var body: some View {
 		ScrollView(showsIndicators: false) {
 			VStack(alignment: .leading) {
@@ -145,6 +185,30 @@ struct HomeView: View {
 						}
 					}
 					.padding(.horizontal)
+
+
+				HStack {
+					Text("Recent Workouts")
+						.font(.title2)
+					Spacer()
+					Button {
+						print("Button Tapped")
+					} label: {
+						Text("Show more")
+							.padding(.all, 10)
+							.foregroundColor(.white)
+							.background(.blue)
+							.cornerRadius(20)
+					}
+				}
+				.padding(.horizontal)
+
+				LazyVStack {
+					ForEach(mockWorkouts, id: \.id) { workout in
+						WorkoutCard(workout: workout)
+					}
+					.padding(.horizontal)
+				}
 			}
 		}
 	}
